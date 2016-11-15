@@ -77,6 +77,8 @@ import static com.github.pires.obd.reader.activity.ConfigActivity.getGpsUpdatePe
 
 // Some code taken from https://github.com/barbeau/gpstest
 
+//safbasufblj
+
 @ContentView(R.layout.main)
 public class MainActivity extends RoboActivity implements ObdProgressListener, LocationListener, GpsStatus.Listener {
 
