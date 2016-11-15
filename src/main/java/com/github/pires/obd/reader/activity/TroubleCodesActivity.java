@@ -109,6 +109,9 @@ public class TroubleCodesActivity extends Activity {
                     ///finish();
                     break;
                 case DATA_OK:
+                    Log.d ("error : ", "dtc" + msg.getData());
+                    Log.d ("error : ", "dtc" + msg.obj);
+                    Log.d ("error : ", "dtc" + msg);
                     dataOk((String) msg.obj);
                     break;
 
@@ -190,7 +193,8 @@ public class TroubleCodesActivity extends Activity {
     }
 
     Map<String, String> getDict(int keyId, int valId) {
-        String[] keys = getResources().getStringArray(keyId);
+        String[] keys;
+        keys = getResources().getStringArray(keyId);
         String[] vals = getResources().getStringArray(valId);
 
         Map<String, String> dict = new HashMap<String, String>();
@@ -213,14 +217,15 @@ public class TroubleCodesActivity extends Activity {
         ListView lv = (ListView) findViewById(R.id.listView);
         Map<String, String> dtcVals = getDict(R.array.dtc_keys, R.array.dtc_values);
         //TODO replace below codes (res) with aboce dtcVals
-        //String tmpVal = dtcVals.get(res.split("\n"));
+        String tmpVal = dtcVals.get(res.split("\n"));
         //String[] dtcCodes = new String[]{};
         ArrayList<String> dtcCodes = new ArrayList<String>();
-        //int i =1;
+        int i =1;
+        Log.d("res: ",res);
         if (res != null) {
             for (String dtcCode : res.split("\n")) {
                 dtcCodes.add(dtcCode + " : " + dtcVals.get(dtcCode));
-                Log.d("TEST", dtcCode + " : " + dtcVals.get(dtcCode));
+                Log.d("TEST", dtcCode + " xyz " + dtcVals.get(dtcCode));
             }
         } else {
             dtcCodes.add("There are no errors");
@@ -299,7 +304,7 @@ public class TroubleCodesActivity extends Activity {
                     );
                     Log.d(TAG, "Message received on handler here");
                     mHandler.obtainMessage(CANNOT_CONNECT_TO_DEVICE).sendToTarget();
-                    return null;
+                    return "abc";
                 }
 
                 try {
@@ -365,7 +370,7 @@ public class TroubleCodesActivity extends Activity {
                 }
 
             }
-
+            Log.e("dtc : ",result);
             return result;
         }
 
